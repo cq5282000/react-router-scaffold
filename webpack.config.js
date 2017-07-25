@@ -2,28 +2,33 @@
  * Created by chenqu on 2017/7/25.
  */
 const path = require('path');
-console.log(__dirname);
+const webpack = require('webpack');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
-    entry: './demo1/main.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'), //当前文件所在目录的根目录
-        filename: 'bundle.js',
+    entry: {
+        app: './demo1/app.js',
+        main: './demo1/main.js'
     },
+    output: {
+        path: path.resolve(__dirname, 'dist'), //__dirname指的是当前文件所在目录的根目录
+        filename: '[name].js',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.txt$/,
+                use: 'raw-loader'
+            },
 
-    // plugins: [
-    //     new webpack.LoaderOptionsPlugin({
-    //         options: {
-    //             moduel: {
-    //                 loaders:[
-    //                     {
-    //                         test: /\.js[x]?$/,
-    //                         exclude: /node_modules/,
-    //                         loader: 'babel-loader?presets[]=es2015&presets[]=react'
-    //                     },
-    //                 ]
-    //             },
-    //         }
-    //     })
-    // ]
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin({
+            // Options...
+        }),
+        new OpenBrowserPlugin({
+            // url:
+        })
+    ]
 
 };
