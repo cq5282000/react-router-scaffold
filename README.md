@@ -1,6 +1,6 @@
 # webpack-midum
 
-##起步
+## 起步
 
 ```bash
 # Linux & Mac
