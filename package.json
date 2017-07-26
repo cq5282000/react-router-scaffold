@@ -25,5 +25,8 @@
     "react-dom": "^15.6.1",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.6.1"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
