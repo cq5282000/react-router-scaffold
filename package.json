@@ -4,7 +4,7 @@
   "description": "this is a study demo",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,10 @@
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.6.1"
   },
-  "scripts": {
-    "build": "webpack"
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.4",
+    "html-webpack-plugin": "^2.29.0",
+    "style-loader": "^0.18.2"
   }
 }
