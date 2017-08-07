@@ -1,10 +1,10 @@
 /**
  * Created by chenqu on 2017/7/25.
  */
-const React = require('react');
-const ReactDOM = require('react-dom');
+export default {
+    log() {
+        // 在服务器启动后进行修改以进行测试
+        document.getElementById('app').innerHTML = '<span>22saas</span>';
 
-ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.querySelector('#wrapper')
-);
+    }
+}

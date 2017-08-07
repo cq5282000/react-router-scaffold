@@ -10,10 +10,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         app: './src/app.js',
-        main: './src/main.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'), //__dirname指的是当前文件所在目录的根目录
+        path: path.resolve(__dirname, 'dist/entry'), //__dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
     },
     module: {
@@ -67,15 +66,20 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin({  //模块热加载
             // Options...
         }),
-        new OpenBrowserPlugin({  //启动时打开浏览器
-            // url:
-        }),
+        // new OpenBrowserPlugin({  //启动时打开浏览器,npm start配置会打开浏览器，连个同时配置，就会打开多个浏览器
+        //     url: './entry/index.html',
+        // }),
         new HtmlWebpackPlugin({              //自动绑定bundle文件到模版文件上
             title: 'Output Management',
-            filename: 'entry/index.html',    //生成文件位置
+            filename: 'index.html',    //生成文件位置
             template: 'entry/index.html'    //模版文件位置
         }),
-        new CleanWebpackPlugin(['dist']), //清理dist文件
-    ]
+        // new CleanWebpackPlugin(['dist']), //清理dist文件
+    ],
+    devServer: {
+        hot: true, // 告诉 dev-server 我们在使用 HMR
+        contentBase: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
+    }
 
 };

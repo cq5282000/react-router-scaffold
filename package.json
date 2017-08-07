@@ -4,7 +4,10 @@
   "description": "this is a study demo",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --watch --progress --open"
   },
   "repository": {
     "type": "git",
