@@ -9,7 +9,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './src/app.js',
+        app: [
+            // 'babel-polyfill',
+            // 'react-hot-loader/patch',
+            './src/app.js'
+        ]
     },
     output: {
         path: path.resolve(__dirname, 'dist/entry'), //__dirname指的是当前文件所在目录的根目录
@@ -57,12 +61,40 @@ module.exports = {
                 use: [
                     'xml-loader'
                 ]
-            }
+            },
+            /*react, es6配置, 配置了以后会有个问题，就是原来的HMR热替换无法正常刷新界面，需要配置其他的热替换界面*/
+            {
+                test: /\.jsx?$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['es2015', 'react']
+                        }
+                    }
+                ]
+                // use: [
+                //     'babel-loader-preset'
+                // ]
+            },
+            {
+                test: /\.jsx$/,
+                use: [
+                    {
+                        loader:'react-hot-loader',
+                    }
 
+                ]
+            },
         ]
     },
     devtool: 'inline-source-map',
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
         new webpack.HotModuleReplacementPlugin({  //模块热加载
             // Options...
         }),
