@@ -90,8 +90,11 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(), // 模块热加载
         new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
             title: 'Output Management',
-            filename: 'html/index.html',    // 生成文件位置
+            filename: 'html/app.html',    // 生成文件位置
             template: 'template/index.html',    // 模版文件位置
+            chunks: [
+                'main',
+            ],
         }),
     ],
     devServer: {
