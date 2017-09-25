@@ -1,39 +1,11 @@
-# webpack-midum
+# react-router-scaffold 更新日志
 
-## 起步
+这个项目主要是研究react-router以及按需加载，主要是学习react-router
 
-```bash
-# Linux & Mac
-$  webpack
-```
-工程build
+## 2017年9月25日  
 
-```bash
-# Linux & Mac
-$  webpack-dev-server
-```
-运行服务器
+### 项目基础配置
 
-##  配置选项
-
-在package.json中添加
-
-```bash
-# Linux & Mac
-{
-  ...
-  "scripts": {
-    "build": "webpack"
-  },
-  ...
-}
-```
-
-就可以通过
-
-```bash
-# Linux & Mac
-$  npm run build
-```
-
-编译项目
+- es6
+- 热加载
+- react
