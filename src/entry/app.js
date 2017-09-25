@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 // import ReactDOM from 'react-dom'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../containers/main';
+import App from '../containers/AppContainer';
 
 ReactDOM.render(
     <AppContainer>
@@ -18,7 +18,7 @@ ReactDOM.render(
 if (module.hot) {
     module.hot.accept('../containers/main.js', () => {
         console.log('react hot loader');
-        const NextApp = require('../containers/main.js').default;
+        const NextApp = require('../containers/AppContainer.js').default;
         ReactDOM.render(
             <AppContainer>
                 <NextApp/>
