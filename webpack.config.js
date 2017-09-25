@@ -80,7 +80,7 @@ module.exports = {
             },
         ],
     },
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
         // new webpack.DefinePlugin({
         //     'process.env': {
