@@ -30,7 +30,7 @@ let opened = false;
 const openBrowser = () => {
     const address = server.listeningApp.address();
     const url = `http://${address.address}:${address.port}`;
-    open(`${url}/entry/html/index-for-demo.html`);
+    open(`${url}/entry/html/index.html`);
 };
 
 compiler.plugin('done', () => {
@@ -41,7 +41,7 @@ compiler.plugin('done', () => {
 });
 
 const startServer = new Promise((resolve, reject) => {
-    server.listen(webpackConfig.devServer.port, webpackConfig.devServer.host, (err) => {
+    server.listen(devServerOptions.port, devServerOptions.host, (err) => {
         if (err) {
             reject(err);
         } else {
