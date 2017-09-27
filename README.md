@@ -19,3 +19,6 @@
 -按需加载的方案有人提到了require.ensure,后面应该考虑怎么和react-router结合。
 
 -接下来几天应该是react-router的持续学习不间断时间。
+
+-对于大型应用来说，一个首当其冲的问题是所需加载的javascript的大小。程序应该只加载当前渲染页所需的javascript，有些开发者将这种方式称为代码
+拆分
