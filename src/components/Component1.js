@@ -6,7 +6,10 @@ import React, { Component } from 'react';
 export default class Component1 extends Component {
     render() {
         return (
-            <h1>Component1</h1>
+            <div>
+                <h1>Component11111</h1>
+                <div>{ this.props.children }</div>
+            </div>
         );
     }
 }
