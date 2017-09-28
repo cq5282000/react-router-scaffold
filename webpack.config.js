@@ -16,11 +16,18 @@ module.exports = {
             'webpack/hot/dev-server',
             './src/entry/app.js',
         ],
+        com: [
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?http://localhost:8080/',
+            'webpack/hot/dev-server',
+            './src/entry/com.js',
+        ],
     },
     output: {
-        path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
+        // path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
-        publicPath: '/entry/',
+        // publicPath: '/entry/',
+        publicPath: '/',
     },
     module: {
         rules: [
@@ -88,23 +95,32 @@ module.exports = {
         //     },
         // }),
         new webpack.HotModuleReplacementPlugin(), // 模块热加载
-        new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
-            title: 'Output Management',
-            filename: 'html/app.html',    // 生成文件位置
-            template: 'template/index.html',    // 模版文件位置
-            chunks: [
-                'main',
-            ],
-        }),
+        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
+        //     title: 'Output Management',
+        //     filename: 'html/index.html',    // 生成文件位置
+        //     template: 'template/index.html',    // 模版文件位置
+        //     chunks: [
+        //         'app',
+        //     ],
+        // }),
+        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
+        //     title: 'Management',
+        //     filename: 'html/com.html',    // 生成文件位置
+        //     template: 'template/index.html',    // 模版文件位置
+        //     chunks: [
+        //         'com',
+        //     ],
+        // }),
     ],
     devServer: {
         hot: true, // 告诉 dev-server 我们在使用 HMR
-        contentBase: path.resolve(__dirname, 'src'),
+        // contentBase: path.resolve(__dirname, 'src'),
         inline: true,
         historyApiFallback: true,
         stats: 'normal',
-        publicPath: '/entry/',
-        host: '0.0.0.0',
+        // publicPath: '/entry/',
+        publicPath: '/',
+        host: '127.0.0.1',
         port: 8080,
     },
 };
