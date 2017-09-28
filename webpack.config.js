@@ -10,12 +10,12 @@ const cssnext = require('postcss-cssnext');
 
 module.exports = {
     entry: {
-        app: [
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:8080/',
-            'webpack/hot/dev-server',
-            './src/entry/app.js',
-        ],
+        // app: [
+        //     'react-hot-loader/patch',
+        //     'webpack-dev-server/client?http://localhost:8080/',
+        //     'webpack/hot/dev-server',
+        //     './src/entry/app.js',
+        // ],
         com: [
             'react-hot-loader/patch',
             'webpack-dev-server/client?http://localhost:8080/',
@@ -24,10 +24,10 @@ module.exports = {
         ],
     },
     output: {
-        // path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
+        path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
-        // publicPath: '/entry/',
-        publicPath: '/',
+        publicPath: '/entry/',
+        // publicPath: '/',
     },
     module: {
         rules: [
@@ -103,23 +103,24 @@ module.exports = {
         //         'app',
         //     ],
         // }),
-        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
-        //     title: 'Management',
-        //     filename: 'html/com.html',    // 生成文件位置
-        //     template: 'template/index.html',    // 模版文件位置
-        //     chunks: [
-        //         'com',
-        //     ],
-        // }),
+        new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
+            title: 'Management',
+            filename: 'html/index.html',    // 生成文件位置
+            template: 'template/index.html',    // 模版文件位置
+            chunks: [
+                'com',
+            ],
+        }),
     ],
     devServer: {
         hot: true, // 告诉 dev-server 我们在使用 HMR
         // contentBase: path.resolve(__dirname, 'src'),
         inline: true,
-        historyApiFallback: true,
+        // historyApiFallback: true,
         stats: 'normal',
-        // publicPath: '/entry/',
-        publicPath: '/',
+        // publicPath: '/',
+        publicPath: '/entry/',
+        // publicPath: '/',
         host: '127.0.0.1',
         port: 8080,
     },
