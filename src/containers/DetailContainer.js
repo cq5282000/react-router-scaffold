@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Router, hashHistory } from 'react-router';
+// import {syncHistoryWithStore,} from 'react-router-redux'
 import demandLoadingRoute from '../../router/demandLoadingRoute';
 
 export default class DetailContainer extends Component {
