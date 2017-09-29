@@ -7,8 +7,32 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PostcssImport = require('postcss-import');
 const precss = require('precss');
 const cssnext = require('postcss-cssnext');
+const rd = require('rd');
 
-module.exports = {
+const entrySettingItem = (lastPortion) => [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080/',
+    'webpack/hot/dev-server',
+    `./src/entry/${lastPortion}.js`,
+];
+
+const entry = {};
+let plugins = [];
+
+const SRC = path.resolve(process.cwd(), 'src');
+const ENTRY = path.resolve(SRC, 'entry');
+rd.eachFileFilterSync(ENTRY, /\.js$/, (file) => {
+    const lastPortion = path.basename(file, '.js').toLowerCase();
+    entry[lastPortion] = entrySettingItem(lastPortion);
+    const htmlWebpackPluginItem = new HtmlWebpackPlugin({
+        filename: `html/${lastPortion}.html`, // 生成文件位置
+        template: 'template/index.html', // 模版文件位置
+        chunks: [lastPortion], // 绑定对应打包的JS文件
+    });
+    plugins = [...plugins, htmlWebpackPluginItem];
+});
+
+let webpackConfig = {
     entry: {
         // app: [
         //     'react-hot-loader/patch',
@@ -16,12 +40,30 @@ module.exports = {
         //     'webpack/hot/dev-server',
         //     './src/entry/app.js',
         // ],
-        com: [
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:8080/',
-            'webpack/hot/dev-server',
-            './src/entry/com.js',
-        ],
+        // com: [
+        //     'react-hot-loader/patch',
+        //     'webpack-dev-server/client?http://localhost:8080/',
+        //     'webpack/hot/dev-server',
+        //     './src/entry/com.js',
+        // ],
+        // detail: [
+        //     'react-hot-loader/patch',
+        //     'webpack-dev-server/client?http://localhost:8080/',
+        //     'webpack/hot/dev-server',
+        //     './src/entry/detail.js',
+        // ],
+        // list: [
+        //     'react-hot-loader/patch',
+        //     'webpack-dev-server/client?http://localhost:8080/',
+        //     'webpack/hot/dev-server',
+        //     './src/entry/list.js',
+        // ],
+        // form: [
+        //     'react-hot-loader/patch',
+        //     'webpack-dev-server/client?http://localhost:8080/',
+        //     'webpack/hot/dev-server',
+        //     './src/entry/form.js',
+        // ],
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
@@ -103,14 +145,14 @@ module.exports = {
         //         'app',
         //     ],
         // }),
-        new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
-            title: 'Management',
-            filename: 'html/index.html',    // 生成文件位置
-            template: 'template/index.html',    // 模版文件位置
-            chunks: [
-                'com',
-            ],
-        }),
+        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
+        //     title: 'Management',
+        //     filename: 'html/index.html',    // 生成文件位置
+        //     template: 'template/index.html',    // 模版文件位置
+        //     chunks: [
+        //         'com',
+        //     ],
+        // }),
     ],
     devServer: {
         hot: true, // 告诉 dev-server 我们在使用 HMR
@@ -125,3 +167,7 @@ module.exports = {
         port: 8080,
     },
 };
+plugins = [...plugins, webpackConfig.plugins[0]];
+webpackConfig = Object.assign(webpackConfig, { entry, plugins });
+
+module.exports = webpackConfig;

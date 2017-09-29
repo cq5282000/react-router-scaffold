@@ -1,23 +1,22 @@
 /**
- * Created by chenqu on 2017/9/27.
+ * Created by chenqu on 2017/9/29.
  */
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { Router, hashHistory } from 'react-router';
-import TestContainer from '../containers/TestContainer';
+import DetailContainer from '../containers/DetailContainer';
 
 
 render(
     <AppContainer>
-        <TestContainer/>
+        <DetailContainer/>
     </AppContainer>,
     document.getElementById('app'),
 );
 
 if (module.hot) {
-    module.hot.accept('../containers/TestContainer.js', () => {
-        const NextApp = require('../containers/TestContainer.js').default;
+    module.hot.accept('../containers/DetailContainer.js', () => {
+        const NextApp = require('../containers/DetailContainer.js').default;
         render(
             <AppContainer>
                 <NextApp/>

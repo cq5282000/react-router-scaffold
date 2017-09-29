@@ -3,8 +3,8 @@
  */
 import React, { Component } from 'react';
 
-export default class Message extends Component {
+export default class Index extends Component {
     render() {
-        return (<h1>Message</h1>);
+        return (<h1>Index</h1>);
     }
 }
