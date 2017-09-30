@@ -1,11 +1,11 @@
 /**
  * Created by chenqu on 2017/9/29.
  */
-import DetailComponent from '../src/components/DetailComponent';
+import DetailContainer from '../src/containers/DetailContainer';
 
 const detailRoute = {
     path: '/detail',
-    component: DetailComponent,
+    component: DetailContainer,
 };
 
 export default detailRoute;

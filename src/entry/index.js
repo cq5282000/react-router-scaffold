@@ -5,8 +5,10 @@ import React, { Component, Children, createElement } from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Router, hashHistory } from 'react-router';
-import DetailContainer from '../containers/DetailContainer';
+// import DetailContainer from '../containers/DetailContainer';
+import RouterContainer from '../containers/base/RouterContainer';
 
+// hack around https://github.com/gaearon/react-hot-boilerplate/pull/61#issuecomment-211504531
 Router.prototype.componentWillReceiveProps = (nextProps) => {
     const components = [];
 
@@ -26,14 +28,14 @@ Router.prototype.componentWillReceiveProps = (nextProps) => {
 
 render(
     <AppContainer>
-        <DetailContainer/>
+        <RouterContainer/>
     </AppContainer>,
     document.getElementById('app'),
 );
 
 if (module.hot) {
-    module.hot.accept('../containers/DetailContainer.js', () => {
-        const NextApp = require('../containers/DetailContainer.js').default;
+    module.hot.accept('../containers/base/RouterContainer.js', () => {
+        const NextApp = require('../containers/base/RouterContainer.js').default;
         render(
             <AppContainer>
                 <NextApp/>

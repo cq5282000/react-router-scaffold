@@ -1,11 +1,11 @@
 /**
  * Created by chenqu on 2017/9/29.
  */
-import ListComponent from '../src/components/ListComponent';
+import ListContainer from '../src/containers/ListContainer';
 
 const listRoute = {
     path: '/list',
-    component: ListComponent,
+    component: ListContainer,
 };
 
 export default listRoute;

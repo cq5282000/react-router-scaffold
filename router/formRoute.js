@@ -1,11 +1,11 @@
 /**
  * Created by chenqu on 2017/9/29.
  */
-import FormComponent from '../src/components/FormComponent';
+import FormContainer from '../src/containers/FormContainer';
 
 const formRoute = {
     path: '/form',
-    component: FormComponent,
+    component: FormContainer,
 };
 
 export default formRoute;

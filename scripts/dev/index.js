@@ -17,7 +17,7 @@ let opened = false;
 const openBrowser = () => {
     const address = server.listeningApp.address();
     const url = `http://${address.address}:${address.port}`;
-    open(`${url}/entry/html/detail.html`);
+    open(`${url}/entry/html/index.html`);
     // open(`${url}`);
 };
 

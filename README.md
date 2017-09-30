@@ -40,7 +40,7 @@
 - 设计思路： 每一类界面对应一个单独的入口文件和一个container文件，同时每一类界面对应一类单独的路由设置，container去加载每类界面对应的路由
 配置，入口文件去加载container，
 
-- 入口文件氛围三大类list.js, formRoute.js, detail.js,分别对应的container为，ListContainer.js， FormContainer,js, DetailContainer.js
+- 入口文件氛围三大类list.js, formRoute.js, index.js,分别对应的container为，ListContainer.js， FormContainer,js, DetailContainer.js
 三大类，对应的路由设置分别为listRoutes.js, forRoutes.js, detailRoutes.js
 
 - 但是设计有个很大的问题，就是关于请求部分放在哪里，这个待完善。先规划项目整体
@@ -54,3 +54,6 @@
 ### bug 记录
 
 - 组件内容的热替换和路径的热替换无发同时实现
+
+
+### 2017年9月30日

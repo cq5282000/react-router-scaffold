@@ -8,7 +8,7 @@ import demandLoadingRoute from '../../router/demandLoadingRoute';
 export default class ListContainer extends Component {
     render() {
         return (
-            <Router history={hashHistory} routes={demandLoadingRoute}/>
+            <h1>ListContainer</h1>
         );
     }
 }
