@@ -9,26 +9,14 @@ import listRoute from './listRoute';
 
 const demandLoadingRoute = {
     path: '/',
-    getChildRoutes(partialNextState, callback) {
-        require.ensure([], () => {
-            callback(null, [
-                detailRoute,
-                listRoute,
-                formRoute,
-            ]);
-        });
-    },
-    getIndexRoute(partialNextState, callback) {
-        require.ensure([], () => {
-            callback(null, {
-                component: Index,
-            });
-        });
-    },
-    getComponents(nextState, callback) {
-        require.ensure([], () => {
-            callback(null, ClassifyRouterComponent);
-        });
+    component: ClassifyRouterComponent,
+    childRoutes: [
+        detailRoute,
+        listRoute,
+        formRoute,
+    ],
+    indexRoute: {
+        component: Index,
     },
 };
 
