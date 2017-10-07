@@ -5,7 +5,11 @@ import ListContainer from '../src/containers/ListContainer';
 
 const listRoute = {
     path: '/list',
-    component: ListContainer,
+    getComponents(nextState, callback) {
+        require.ensure([], (require) => {
+            callback(null, require('../src/containers/ListContainer').default);
+        });
+    },
 };
 
 export default listRoute;

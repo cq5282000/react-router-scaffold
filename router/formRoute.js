@@ -5,7 +5,12 @@ import FormContainer from '../src/containers/FormContainer';
 
 const formRoute = {
     path: '/form',
-    component: FormContainer,
+    getComponents(nextState, callback) {
+        require.ensure([], (require) => {
+            callback(null, require('../src/containers/FormContainer').default);
+        });
+    },
+    //component: FormContainer,
 };
 
 export default formRoute;
