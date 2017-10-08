@@ -32,7 +32,7 @@ export default (routes) => {
     return render(
         <AppContainer>
             <Router history={hashHistory} routes={routes}/>
-        </AppContainer>
+        </AppContainer>,
     );
 };
 

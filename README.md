@@ -68,6 +68,21 @@ react-router适合于单页面应用，针对不同的场景设置不同的conta
 
 - 目前的工程目录结构暂定成这样
 
+- 引入antd以后比那一的时间大大加长，怎么回事
+
+
+### 注意
+
+按需加载的时候，不要直接import '....'，而要用require，否则模块会直接被webpack打包，而不会打包成单独的异步加载文件
+
 ### 问题
 
 container的按需加载已经实现，那么组件的按需加载如何实现。
+
+### 组件的按需加载
+
+### 2017年10月8号
+
+- 引入happypack和commonChunkPlugins以后编译时间反而变长
+
+- 引入commonChunkPlugin的时候每个入口文件必须绑定定义的chunk

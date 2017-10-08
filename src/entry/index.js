@@ -28,7 +28,7 @@ Router.prototype.componentWillReceiveProps = (nextProps) => {
 
 render(
     <AppContainer>
-        <RouterContainer/>
+        <RouterContainer />
     </AppContainer>,
     document.getElementById('app'),
 );
@@ -38,7 +38,7 @@ if (module.hot) {
         const NextApp = require('../containers/base/RouterContainer.js').default;
         render(
             <AppContainer>
-                <NextApp/>
+                <NextApp />
             </AppContainer>,
             document.getElementById('app'),
         );

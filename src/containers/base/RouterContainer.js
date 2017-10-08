@@ -9,7 +9,7 @@ import demandLoadingRoute from '../../../router/demandLoadingRoute';
 export default class RouterContainer extends Component {
     render() {
         return (
-            <Router history={hashHistory} routes={demandLoadingRoute}/>
+            <Router history={hashHistory} routes={demandLoadingRoute} />
         );
     }
 }
