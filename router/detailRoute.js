@@ -1,8 +1,7 @@
 /**
  * Created by chenqu on 2017/9/29.
  */
-// import DetailContainer from '../src/containers/DetailContainer';
-// const DetailContainer = require('../src/containers/DetailContainer').default;
+import DetailContainer from '../src/containers/DetailContainer';
 
 const detailRoute = {
     path: '/detail',

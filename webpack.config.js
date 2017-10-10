@@ -9,10 +9,17 @@ const precss = require('precss');
 const cssnext = require('postcss-cssnext');
 const rd = require('rd');
 
+let NODE_ENV = process.env.NODE_ENV || process.env.ENV || 'production';
+// 注: product环境 process.env.ENV的值不是'production'而是'product'
+if (NODE_ENV.toLowerCase() === 'product') {
+    NODE_ENV = 'production';
+}
+
 const entrySettingItem = (lastPortion) => [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080/',
     'webpack/hot/dev-server',
+    'babel-polyfill',
     `./src/entry/${lastPortion}.js`,
 ];
 
@@ -31,6 +38,25 @@ rd.eachFileFilterSync(ENTRY, /\.js$/, (file) => {
     });
     plugins = [...plugins, htmlWebpackPluginItem];
 });
+
+switch (NODE_ENV) {
+    case 'development':
+        plugins = [...plugins, new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('development'),
+            },
+        })];
+        break;
+    case 'production':
+        plugins = [...plugins, new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production'),
+            },
+        })];
+        break;
+    default:
+        break;
+}
 
 let webpackConfig = {
     entry: {
