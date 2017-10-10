@@ -34,8 +34,8 @@ export default class FormContainer extends Component {
         const { show } = this.props;
         return (
             <div>
-                <button onClick={this.onClickShow}>+</button>
-                <button onClick={this.onClickHide}>-</button>
+                <button onClick={this.onClickShow}>显示</button>
+                <button onClick={this.onClickHide}>隐藏</button>
                 { show && <h1>FormContainer</h1> }
             </div>
         );
