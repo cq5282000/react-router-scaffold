@@ -10,12 +10,12 @@
     ],
     "react/jsx-space-before-closing": [
       "error",
-      "never"
+      "always"
     ],
     "react/jsx-tag-spacing": [
       "error",
       {
-        "beforeSelfClosing": "never"
+        "beforeSelfClosing": "always"
       }
     ],
     "no-prototype-builtins": ["off"],
