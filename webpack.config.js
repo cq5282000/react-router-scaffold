@@ -8,7 +8,7 @@ const PostcssImport = require('postcss-import');
 const precss = require('precss');
 const cssnext = require('postcss-cssnext');
 const rd = require('rd');
-const HappyPack = require('happypack');
+// const HappyPack = require('happypack');
 
 const entrySettingItem = (lastPortion) => [
     'react-hot-loader/patch',
@@ -24,8 +24,8 @@ entry.vendor = [
     'react',
     'react-dom',
     'react-router',
-    // 'react-hot-loader',
-    // 'antd',
+    'react-hot-loader',
+    'antd',
     // 'redux',
     // 'react-redux',
     // 'react-router-redux',
@@ -39,12 +39,12 @@ rd.eachFileFilterSync(ENTRY, /\.js$/, (file) => {
     const htmlWebpackPluginItem = new HtmlWebpackPlugin({
         filename: `html/${lastPortion}.html`, // 生成文件位置
         template: 'template/index.html', // 模版文件位置
+        // chunks: [lastPortion], // 绑定对应打包的JS文件
+        /* 使用commonchunkPlugin的话注销此段代码 */
         chunks: ['vendor', lastPortion], // 绑定对应打包的JS文件
     });
     plugins = [...plugins, htmlWebpackPluginItem];
 });
-
-console.log(JSON.stringify(entry));
 
 let webpackConfig = {
     entry: {
@@ -83,7 +83,7 @@ let webpackConfig = {
         path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
         publicPath: '/entry/',
-        chunkFilename: 'js/[name].[hash].js',
+        // chunkFilename: 'js/[name].[hash].js',
         // publicPath: '/',
     },
     module: {
@@ -101,17 +101,17 @@ let webpackConfig = {
                     'file-loader',
                 ],
             },
-            // {
-            //     test: /\.jsx?$/,
-            //     use: ['babel-loader'],
-            //     include: path.resolve(__dirname, 'src'),
-            // },
             {
-                test: /.js$/,
-                loaders: ['happypack/loader'],
-                // include: path,
-                exclude: /node_modules/,
+                test: /\.jsx?$/,
+                use: ['babel-loader'],
+                include: path.resolve(__dirname, 'src'),
             },
+            // {
+            //     test: /.js$/,
+            //     loaders: ['happypack/loader'],
+            //     // include: path,
+            //     exclude: /node_modules/,
+            // },
             {
                 test: /\.jsx$/,
                 use: [
@@ -158,15 +158,17 @@ let webpackConfig = {
         //     },
         // }),
         new webpack.HotModuleReplacementPlugin(), // 模块热加载
-        new HappyPack({
-            // loaders is the only required parameter:
-            loaders: ['babel-loader'],
-            // customize as needed, see Configuration below
-            // threadPool: happyThreadPool
-        }),
+        /* 使用happy的话注销此段代码 */
+        // new HappyPack({
+        //     // loaders is the only required parameter:
+        //     loaders: ['babel-loader'],
+        //     // customize as needed, see Configuration below
+        //     // threadPool: happyThreadPool
+        // }),
+         /* 使用commonchunkPlugin的话注销此段代码 */
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            // filename: 'common.js',
+            filename: 'chunk/vendor.js',
             // (Give the chunk a different name)
 
             minChunks: 3,

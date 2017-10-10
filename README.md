@@ -86,3 +86,14 @@ container的按需加载已经实现，那么组件的按需加载如何实现�
 - 引入happypack和commonChunkPlugins以后编译时间反而变长
 
 - 引入commonChunkPlugin的时候每个入口文件必须绑定定义的chunk
+
+### 2017年10月9日
+
+- 单页面应用中引入commonChunkPlugin的意义不大，引入后会加长编译的时间，多页面应用中这个作用才比较大。
+- happypack也是一个我比较疑惑的问题，引入之后编译时间反而变长了，跟别人证实了一下，这个去掉了。。。。。。
+
+### code splitting
+
+- 将某些第三方的基础框架模块（ 例如moment，loadash ）或者多个页面的公用模块（js, CSS ）拆分出来独立打包加载，通常这些模块改动频率很低，
+
+- 

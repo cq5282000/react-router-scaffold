@@ -5,6 +5,7 @@ import React, { Component, Children, createElement } from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Router, hashHistory } from 'react-router';
+// import render from '../libs/creatRender';
 // import DetailContainer from '../containers/DetailContainer';
 import RouterContainer from '../containers/base/RouterContainer';
 
@@ -33,6 +34,8 @@ render(
     document.getElementById('app'),
 );
 
+// render(RouterContainer);
+
 if (module.hot) {
     module.hot.accept('../containers/base/RouterContainer.js', () => {
         const NextApp = require('../containers/base/RouterContainer.js').default;
@@ -42,5 +45,6 @@ if (module.hot) {
             </AppContainer>,
             document.getElementById('app'),
         );
+        // render(NextApp);
     });
 }
