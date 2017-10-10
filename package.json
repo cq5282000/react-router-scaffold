@@ -49,9 +49,9 @@
     "rd": "^1.1.2",
     "react-redux": "^5.0.6",
     "react-router": "3",
-    "react-thunk": "^1.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "style-loader": "^0.18.2"
   }
 }

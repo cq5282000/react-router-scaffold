@@ -5,6 +5,9 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Router, hashHistory } from 'react-router';
 import React, { Component, Children, createElement } from 'react';
+import { Provider } from 'react-redux';
+import store from './configureStore';
+
 // hack around https://github.com/gaearon/react-hot-boilerplate/pull/61#issuecomment-211504531
 Router.prototype.componentWillReceiveProps = (nextProps) => {
     const components = [];
@@ -25,9 +28,11 @@ Router.prototype.componentWillReceiveProps = (nextProps) => {
 
 export default (Entry) => {
     return render(
-        <AppContainer>
-            <Entry />
-        </AppContainer>,
+        <Provider store={store} >
+            <AppContainer>
+                <Entry />
+            </AppContainer>
+        </Provider>,
         document.getElementById('app'),
     );
 };
