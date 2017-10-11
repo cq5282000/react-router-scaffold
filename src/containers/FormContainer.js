@@ -36,7 +36,7 @@ export default class FormContainer extends Component {
             <div>
                 <button onClick={this.onClickShow}>显示</button>
                 <button onClick={this.onClickHide}>隐藏</button>
-                { show && <h1>FormContainer</h1> }
+                { show && <h1>FormContainer111</h1> }
             </div>
         );
     }

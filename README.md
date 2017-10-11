@@ -77,4 +77,12 @@ container的按需加载已经实现，那么组件的按需加载如何实现�
 
 - 发现了react-router2和react-hot-loader的热替换不兼容，按需加载的路由设置必须要import该组件，热替换才生效，为什么；
 
-- 
+### 2017年10月11号
+
+- 要注意按需加载时，不要直接 import UserList from '../containers/UserList'， 否则模块会直接被 webpack 打包，而不会打包成单独的异步
+加载的模块文件。
+
+- 关于昨天的哪个BUG，路由设置里面不能加import，因为如果加上，按需加载的配置就不会单独打包成异步加载的模块。
+
+
+
