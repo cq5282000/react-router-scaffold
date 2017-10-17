@@ -4,11 +4,22 @@
 import React, { Component } from 'react';
 
 export default class DetailContainer extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onChange = ::this.onChange;
+    }
+
+    onChange(e) {
+        console.log(e.target);
+    }
+
     render() {
         return (
             <div>
-                detail111
+                <input onChange={this.onChange} />
             </div>
         );
     }
+
 }
