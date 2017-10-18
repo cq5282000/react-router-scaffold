@@ -5,14 +5,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions/detailAction';
 
-@connect((state) => ({
-    show: state.detail.show,
-}), {
-    showOp: actions.showOp,
-    hideOp: actions.hideOp,
-})
+// @connect((state) => ({
+//     show: state.detail.show,
+// }), {
+//     showOp: actions.showOp,
+//     hideOp: actions.hideOp,
+// })
 
-export default class FormContainer extends Component {
+class FormContainer extends Component {
 
     constructor(props) {
         super(props);
@@ -41,3 +41,10 @@ export default class FormContainer extends Component {
         );
     }
 }
+
+export default connect((state) => ({
+    show: state.detail.show,
+}), {
+    showOp: actions.showOp,
+    hideOp: actions.hideOp,
+})(FormContainer);

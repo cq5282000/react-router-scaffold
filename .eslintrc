@@ -42,6 +42,8 @@
     ],
     // @see https://github.com/benmosher/eslint-plugin-import
     "import/no-extraneous-dependencies": ["off"],
+    // no dynamic require disable
+    "import/no-dynamic-require": ["off"],
     // disable this for redux connect @see https://github.com/benmosher/eslint-plugin-import/issues/544
     "import/no-named-as-default": ["off"],
     // disable this for redux connect @see https://github.com/benmosher/eslint-plugin-import/issues/544
