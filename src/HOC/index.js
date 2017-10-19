@@ -37,7 +37,7 @@ const HOCFactory = (...params) => {
                             TodoComponent: module.default,
                         });
                     });
-                });
+                }, WrappedComponent);
             }
             render() {
                 const { TodoComponent } = this.state;

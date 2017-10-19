@@ -4,10 +4,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const PostcssImport = require('postcss-import');
 const precss = require('precss');
 const cssnext = require('postcss-cssnext');
 const rd = require('rd');
+
+const DIST = path.resolve(__dirname, 'dist');
 
 let NODE_ENV = process.env.NODE_ENV || process.env.ENV || 'production';
 // 注: product环境 process.env.ENV的值不是'production'而是'product'
@@ -94,7 +97,7 @@ let webpackConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
-        publicPath: '/entry/',
+        publicPath: 'http://aaa.com/entry/',
         // publicPath: '/',
     },
     module: {
@@ -163,6 +166,7 @@ let webpackConfig = {
         //     },
         // }),
         new webpack.HotModuleReplacementPlugin(), // 模块热加载
+        new CleanWebpackPlugin([DIST]),
         // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
         //     title: 'Output Management',
         //     filename: 'html/index.html',    // 生成文件位置
