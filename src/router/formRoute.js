@@ -7,7 +7,7 @@ const formRoute = {
     path: '/form',
     getComponents(nextState, callback) {
         require.ensure([], (require) => {
-            callback(null, require('../src/containers/FormContainer').default);
+            callback(null, require('../containers/FormContainer').default);
         });
     },
     //component: FormContainer,

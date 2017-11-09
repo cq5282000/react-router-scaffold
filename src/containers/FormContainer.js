@@ -18,16 +18,26 @@ class FormContainer extends Component {
         super(props);
         this.onClickShow = ::this.onClickShow;
         this.onClickHide = ::this.onClickHide;
+        this.onClickRefresh = ::this.onClickRefresh;
+    }
+
+    componentWillMount() {
+        // Android.showToast('hello jsbridge');
     }
 
     onClickHide() {
         const { hideOp } = this.props;
         hideOp();
+        Android.showToast('hello jsbridge');
     }
 
     onClickShow() {
         const { showOp } = this.props;
         showOp();
+    }
+
+    onClickRefresh() {
+        location.reload();
     }
 
     render() {
@@ -36,7 +46,8 @@ class FormContainer extends Component {
             <div>
                 <button onClick={this.onClickShow}>显示</button>
                 <button onClick={this.onClickHide}>隐藏</button>
-                { show && <h1>FormContainer111</h1> }
+                <button onClick={this.onClickRefresh}>刷新</button>
+                { show && <h1>FormContainer</h1> }
             </div>
         );
     }

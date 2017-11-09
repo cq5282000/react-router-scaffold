@@ -7,7 +7,7 @@ const detailRoute = {
     path: '/detail',
     getComponents(nextState, callback) {
         require.ensure([], (require) => {
-            callback(null, require('../src/containers/DetailContainer').default);
+            callback(null, require('../containers/DetailContainer').default);
         });
     },
     // component: DetailContainer,

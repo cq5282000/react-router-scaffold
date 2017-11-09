@@ -36,7 +36,7 @@ rd.eachFileFilterSync(ENTRY, /\.js$/, (file) => {
     entry[lastPortion] = entrySettingItem(lastPortion);
     const htmlWebpackPluginItem = new HtmlWebpackPlugin({
         filename: `html/${lastPortion}.html`, // 生成文件位置
-        template: 'template/index.html', // 模版文件位置
+        template: 'src/template/index.html', // 模版文件位置
         chunks: [lastPortion], // 绑定对应打包的JS文件
     });
     plugins = [...plugins, htmlWebpackPluginItem];
@@ -97,7 +97,7 @@ let webpackConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
-        publicPath: 'http://aaa.com/entry/',
+        publicPath: '/entry/',
         // publicPath: '/',
     },
     module: {
@@ -192,8 +192,8 @@ let webpackConfig = {
         stats: 'normal',
         // publicPath: '/',
         publicPath: '/entry/',
-        host: '127.0.0.1',
-        port: 8080,
+        host: '0.0.0.0',
+        port: 8000,
     },
 };
 plugins = [...plugins, webpackConfig.plugins[0]];
