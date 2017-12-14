@@ -67,7 +67,8 @@
     "jsx-a11y/mouse-events-map-to-key-events": "off",
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/redundant-alt": "off",
-    "jsx-a11y/valid-aria-role": "off"
+    "jsx-a11y/valid-aria-role": "off",
+    "eol-last": "off"
   },
   "env": {
     "browser": true

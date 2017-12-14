@@ -28,7 +28,7 @@ class FormContainer extends Component {
     onClickHide() {
         const { hideOp } = this.props;
         hideOp();
-        Android.showToast('hello jsbridge');
+        // Android.showToast('hello jsbridge');
     }
 
     onClickShow() {

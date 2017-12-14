@@ -9,22 +9,23 @@ export default class DetailContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            DetailComponent: null,
-        };
+        console.log('');
+    //     this.state = {
+    //         DetailComponent: null,
+    //     };
     }
 
     componentWillMount() {
-        this.setState({
-            DetailComponent: HOCFactory({ value: 'test' })('DetailComponent/DetailComponent.js'),
-        });
+        // this.setState({
+        //     DetailComponent: HOCFactory({ value: 'test' })('DetailComponent/DetailComponent.js'),
+        // });
     }
 
     render() {
-        const { DetailComponent } = this.state;
+        // const { DetailComponent } = this.state;
         return (
             <div>
-                <DetailComponent />
+                21312
             </div>
         );
     }

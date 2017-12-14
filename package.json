@@ -4,7 +4,8 @@
   "description": "this is a study demo",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node ./scripts/dev.js"
+    "dev": "cross-env NODE_ENV=development node ./scripts/dev.js",
+    "build": "cross-env webpack"
   },
   "repository": {
     "type": "git",

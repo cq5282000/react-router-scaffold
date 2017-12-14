@@ -6,7 +6,7 @@ import thunk from '../lib/thunk';
 
 export default {
     fetchData: () => thunk({
-        url: './list',
+        url: '/list',
         param: {},
         type: constant.FETCH_DATA,
     }),

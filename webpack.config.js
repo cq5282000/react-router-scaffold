@@ -18,13 +18,28 @@ if (NODE_ENV.toLowerCase() === 'product') {
     NODE_ENV = 'production';
 }
 
-const entrySettingItem = (lastPortion) => [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080/',
-    'webpack/hot/dev-server',
-    'babel-polyfill',
-    `./src/entry/${lastPortion}.js`,
-];
+let publicPathStr = '/entry/'; // 公共路径字符串
+if (NODE_ENV !== 'development') {
+    publicPathStr = '';
+}
+
+const entrySettingItem = (lastPortion) => {
+    switch (NODE_ENV) {
+        case 'development':
+            return [
+                'react-hot-loader/patch',
+                'webpack-dev-server/client?http://localhost:8000/',
+                'webpack/hot/dev-server',
+                'babel-polyfill',
+                `./src/entry/${lastPortion}.js`,
+            ];
+        default: // eslint-disable-line
+            return [
+                'babel-polyfill',
+                `./src/entry/${lastPortion}.js`,
+            ];
+    }
+};
 
 const entry = {};
 let plugins = [];
@@ -35,7 +50,7 @@ rd.eachFileFilterSync(ENTRY, /\.js$/, (file) => {
     const lastPortion = path.basename(file, '.js').toLowerCase();
     entry[lastPortion] = entrySettingItem(lastPortion);
     const htmlWebpackPluginItem = new HtmlWebpackPlugin({
-        filename: `html/${lastPortion}.html`, // 生成文件位置
+        filename: `${lastPortion}.html`, // 生成文件位置
         template: 'src/template/index.html', // 模版文件位置
         chunks: [lastPortion], // 绑定对应打包的JS文件
     });
@@ -50,54 +65,21 @@ switch (NODE_ENV) {
             },
         })];
         break;
-    case 'production':
+    default:
         plugins = [...plugins, new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production'),
+                NODE_ENV: JSON.stringify(NODE_ENV),
             },
         })];
-        break;
-    default:
         break;
 }
 
 let webpackConfig = {
-    entry: {
-        // app: [
-        //     'react-hot-loader/patch',
-        //     'webpack-dev-server/client?http://localhost:8080/',
-        //     'webpack/hot/dev-server',
-        //     './src/entry/app.js',
-        // ],
-        // com: [
-        //     'react-hot-loader/patch',
-        //     'webpack-dev-server/client?http://localhost:8080/',
-        //     'webpack/hot/dev-server',
-        //     './src/entry/com.js',
-        // ],
-        // detail: [
-        //     'react-hot-loader/patch',
-        //     'webpack-dev-server/client?http://localhost:8080/',
-        //     'webpack/hot/dev-server',
-        //     './src/entry/detail.js',
-        // ],
-        // list: [
-        //     'react-hot-loader/patch',
-        //     'webpack-dev-server/client?http://localhost:8080/',
-        //     'webpack/hot/dev-server',
-        //     './src/entry/list.js',
-        // ],
-        // form: [
-        //     'react-hot-loader/patch',
-        //     'webpack-dev-server/client?http://localhost:8080/',
-        //     'webpack/hot/dev-server',
-        //     './src/entry/form.js',
-        // ],
-    },
+    entry: {},
     output: {
         path: path.resolve(__dirname, 'dist'), // __dirname指的是当前文件所在目录的根目录
         filename: '[name].js',
-        publicPath: '/entry/',
+        publicPath: publicPathStr,
         // publicPath: '/',
     },
     module: {
@@ -107,6 +89,15 @@ let webpackConfig = {
                 use: [
                     'style-loader',
                     'css-loader',
+                    'less-loader',
+                ],
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
                 ],
             },
             {
@@ -160,43 +151,28 @@ let webpackConfig = {
     },
     devtool: 'cheap-module-eval-source-map',
     plugins: [
-        // new webpack.DefinePlugin({
-        //     'process.env': {
-        //         NODE_ENV: JSON.stringify('production'),
-        //     },
-        // }),
-        new webpack.HotModuleReplacementPlugin(), // 模块热加载
+        // 模块热加载
         new CleanWebpackPlugin([DIST]),
-        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
-        //     title: 'Output Management',
-        //     filename: 'html/index.html',    // 生成文件位置
-        //     template: 'template/index.html',    // 模版文件位置
-        //     chunks: [
-        //         'app',
-        //     ],
-        // }),
-        // new HtmlWebpackPlugin({              // 自动绑定bundle文件到模版文件上
-        //     title: 'Management',
-        //     filename: 'html/index.html',    // 生成文件位置
-        //     template: 'template/index.html',    // 模版文件位置
-        //     chunks: [
-        //         'com',
-        //     ],
-        // }),
     ],
     devServer: {
         hot: true, // 告诉 dev-server 我们在使用 HMR
-        // contentBase: path.resolve(__dirname, 'src'),
+        contentBase: path.resolve(__dirname, 'node_modules'),
         inline: true,
-        // historyApiFallback: true,
+        historyApiFallback: true,
         stats: 'normal',
-        // publicPath: '/',
-        publicPath: '/entry/',
+        publicPath: publicPathStr,
         host: '0.0.0.0',
         port: 8000,
     },
 };
-plugins = [...plugins, webpackConfig.plugins[0]];
-webpackConfig = Object.assign(webpackConfig, { entry, plugins });
 
+switch (NODE_ENV) {
+    case 'development':
+        plugins = [new webpack.HotModuleReplacementPlugin(), ...plugins];
+        break;
+    default: // eslint-disable-line
+        break;
+}
+
+webpackConfig = Object.assign(webpackConfig, { entry, plugins });
 module.exports = webpackConfig;

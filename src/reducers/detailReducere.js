@@ -18,7 +18,7 @@ export default createReducer(defaultState, {
     [constant.HIDE_OPERATION]: (state, action) => {
         return {
             ...state,
-            show: true,
+            show: false,
         };
     },
 });

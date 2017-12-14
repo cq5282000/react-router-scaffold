@@ -1,0 +1,8 @@
+{
+  "name": "react-router-scaffold",
+  "scripts": {
+    "build": "yarn run build"
+  },
+  "dist": "./dist",
+  "yarn": true
+}
