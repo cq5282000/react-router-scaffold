@@ -105,3 +105,7 @@ container的按需加载已经实现，那么组件的按需加载如何实现�
 - 修改封装的fetch函数，解决了beta环境请求下的BUG
 
 - 修改了requestPath函数
+
+### 2017年12月18日
+
+- 修改封装的fetch函数，解决了post环境请求下的BUG
