@@ -26,7 +26,7 @@ export default class CheckboxHighlight extends Component {
         checked: false,
     };
 
-    // static Checkbox = TabPane;
+    static ChedkboxGroup = Checkbox.Group;
 
     constructor(props) {
         super(props);
