@@ -10,8 +10,8 @@ export default class DetailContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.onCheckboxChange = ::this.onCheckboxChange;
-        this.onInputChange = ::this.onInputChange;
+        this.onCheckboxChange = this.onCheckboxChange.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
         this.state = {
             inputValue: '',
             dataBus: [
@@ -92,6 +92,7 @@ export default class DetailContainer extends Component {
 
     render() {
         const { dataNew } = this.state;
+        const value = true;
         return (
             <div className="content-padded">
                 <div className="input-style">
@@ -107,6 +108,7 @@ export default class DetailContainer extends Component {
                                         labelFront={item.labelFront}
                                         labelHighlight={item.labelHighlight}
                                         labelEnd={item.labelEnd}
+                                        bool={true}
                                     />
                                 </div>
                             );

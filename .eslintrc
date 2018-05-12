@@ -60,6 +60,7 @@
     "react/no-array-index-key": ["off"],
     "react/no-did-mount-set-state": ["off"],
     "react/no-multi-comp": ["off"],
+    "react/jsx-boolean-value": ["off"],
     "react/no-unescaped-entities": ["off"],
     "react/prefer-stateless-function": ["off"],
     "jsx-a11y/img-uses-alt": "off",

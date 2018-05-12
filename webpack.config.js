@@ -89,15 +89,27 @@ let webpackConfig = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'less-loader',
+                    // 'less-loader',
+                    // {
+                    //     loader: 'less-loader',
+                    //     options: {
+                    //         javascriptEnabled: true,
+                    //     },
+                    // },
                 ],
             },
             {
                 test: /\.less$/,
                 use: [
                     'style-loader',
-                    'css-loader',
-                    'less-loader',
+                    // 'css-loader',
+                    // 'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            javascriptEnabled: true,
+                        },
+                    },
                 ],
             },
             {

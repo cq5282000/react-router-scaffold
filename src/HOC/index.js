@@ -7,14 +7,6 @@ const LoadingComponent = () => {
     return <div>加载中...</div>;
 };
 
-// const route = () => {
-//     import("./module").then(module => {
-//         return module.default;
-//     }).catch(err => {
-//         console.log("Chunk loading failed");
-//     });
-// };
-
 const HOCFactory = (...params) => {
     /**
      * @ WrappedComponent 组件路径

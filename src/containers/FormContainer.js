@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions/detailAction';
+import './FormContainer.pcss';
 
 // @connect((state) => ({
 //     show: state.detail.show,
@@ -16,13 +17,35 @@ class FormContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.onClickShow = ::this.onClickShow;
-        this.onClickHide = ::this.onClickHide;
-        this.onClickRefresh = ::this.onClickRefresh;
+        this.onClickShow = this.onClickShow.bind(this);
+        this.onClickHide = this.onClickHide.bind(this);
+        this.onClickRefresh = this.onClickRefresh.bind(this);
+        this.onWordClick = this.onWordClick.bind(this);
+        this.onDragEnd = this.onDragEnd.bind(this);
     }
 
     componentWillMount() {
         // Android.showToast('hello jsbridge');
+    }
+
+    componentDidMount() {
+        // document.getElementById('word').addEventListener('drag', (e) => {
+        //     // e.dataTransfer.setData('Text', e.target);
+        //     // console.log(e.clientX);
+        //     // console.log(e.clientY);
+        //     // console.log(e.offsetX);
+        //     // console.log(e.offsetY);
+        //     // console.log(e.target || e.srcElement);
+        // }, false);
+        // document.getElementById('word').addEventListener('dragend', (e) => {
+        //     console.log(e.clientX);
+        //     console.log(e.clientY);
+        // }, false);
+    }
+
+    onDragEnd(e) {
+        console.log(e.clientX);
+        console.log(e.clientY);
     }
 
     onClickHide() {
@@ -40,14 +63,19 @@ class FormContainer extends Component {
         location.reload();
     }
 
+    onWordClick(e) {
+        console.log('click');
+    }
+
     render() {
         const { show } = this.props;
         return (
-            <div>
+            <div id="dropdown">
                 <button onClick={this.onClickShow}>显示</button>
                 <button onClick={this.onClickHide}>隐藏</button>
                 <button onClick={this.onClickRefresh}>刷新</button>
-                { show && <h1>FormContainer</h1> }
+                { show && <div onDragEnd={this.onDragEnd} draggable="true" id="word" onClick={this.onWordClick}><h1>FormContainer</h1></div> }
+                <div className="img-wrapper" />
             </div>
         );
     }

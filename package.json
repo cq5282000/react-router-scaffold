@@ -19,6 +19,7 @@
   "homepage": "https://github.com/cq5282000/webpack-midum#readme",
   "dependencies": {
     "antd": "^3.2.3",
+    "file-loader": "^1.1.11",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "prop-types": "^15.6.1",
