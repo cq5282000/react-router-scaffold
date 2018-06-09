@@ -11,9 +11,9 @@ export default (url) => {
     switch (envConst) {
         case env.DEVELOPMENT:
             return `.${url}.json`;
-        case env.BETA:
-            return `${location.protocol}//${location.host}${url}`;
+        // case env.BETA:
+        //     return `${location.protocol}//${location.host}${url}`;
         default:
-            return null;
+            return url;
     }
 };

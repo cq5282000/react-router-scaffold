@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions/detailAction';
 import './FormContainer.pcss';
-
 // @connect((state) => ({
 //     show: state.detail.show,
 // }), {
@@ -70,12 +69,35 @@ class FormContainer extends Component {
     render() {
         const { show } = this.props;
         return (
-            <div id="dropdown">
-                <button onClick={this.onClickShow}>显示</button>
-                <button onClick={this.onClickHide}>隐藏</button>
-                <button onClick={this.onClickRefresh}>刷新</button>
-                { show && <div onDragEnd={this.onDragEnd} draggable="true" id="word" onClick={this.onWordClick}><h1>FormContainer</h1></div> }
-                <div className="img-wrapper" />
+            <div>
+                <div id="dropdown">
+                    <button onClick={this.onClickShow}>显示</button>
+                    <button onClick={this.onClickHide}>隐藏</button>
+                    <button onClick={this.onClickRefresh}>刷新</button>
+                    { show && <div onDragEnd={this.onDragEnd} draggable="true" id="word" onClick={this.onWordClick}><h1>FormContainer</h1></div> }
+                    <div className="img-wrapper" />
+                </div>
+                <div className="finding-wrapper">
+                    <div className="finding-bg idle">
+                        <div className="finding-bg-inner idle">1</div>
+                    </div>
+                    <div className="finding-circle">
+                        <div className="c-index-0" />
+                        <div className="c-index-1" />
+                        <div className="c-index-2" />
+                    </div>
+                </div>
+                <div className="pk-wrapper">
+                    <div className="pk-board-cnter-t">
+                        <div className="pk-board-cnter-t-bg">111111</div>
+                    </div>
+                    <div className="pk-board-cnter-b">
+                        <div className="pk-board-cnter-b-bg">111111</div>
+                    </div>
+                    <div className="pk-flash-mask" />
+                    <div className="pk-indicate" alt="" />
+                    <div className="pk-indicate-1" alt="" />
+                </div>
             </div>
         );
     }

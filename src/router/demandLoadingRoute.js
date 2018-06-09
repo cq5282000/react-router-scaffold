@@ -6,6 +6,7 @@ import ClassifyRouterComponent from '../components/ClassifyRouterComponent';
 import detailRoute from './detailRoute';
 import formRoute from './formRoute';
 import listRoute from './listRoute';
+import testRoute from './testRoute';
 
 const demandLoadingRoute = {
     path: '/',
@@ -14,6 +15,7 @@ const demandLoadingRoute = {
         detailRoute,
         listRoute,
         formRoute,
+        testRoute,
     ],
     indexRoute: {
         component: Index,
